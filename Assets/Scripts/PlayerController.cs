@@ -24,15 +24,16 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         rb.AddForce(new Vector2(Input.GetAxis("Horizontal"),0) * Speed * Time.deltaTime);
-        if(Input.GetAxis("Vertical") > 0 && JumpsLeft > 0)
+        if(Input.GetButtonDown("Jump") && JumpsLeft > 0)
         {
             JumpsLeft--;
             IsJumping = true;
         }
         else if (Input.GetAxis("Vertical") < 0)
         {
-            rb.AddForce(new Vector2(0, Input.GetAxis("Vertical")) * Speed * Time.deltaTime);
+            rb.AddForce(new Vector2(0, Input.GetAxis("Vertical")) * Speed * Time.deltaTime * 2);
         }
         else
         {
